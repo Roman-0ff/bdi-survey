@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шкала депрессии Бека (BDI)</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- pdfmake 0.2.12 + шрифты (кириллица) -->
+<script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.12/build/pdfmake.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.12/build/vfs_fonts.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Шкала депрессии Бека</h1>
+    <p class="subtitle">Beck Depression Inventory (BDI) · 21 пункт</p>
+    <p class="privacy-note">
+      🔒 Все ответы обрабатываются <b>локально в вашем браузере</b>.
+      Ничего не отправляется на сервер, данные не сохраняются.
+    </p>
+  </header>
+
+  <section id="demographics" class="card">
+    <h2>Демографические данные</h2>
+    <div class="field">
+      <label>Пол:</label>
+      <label class="radio"><input type="radio" name="gender" value="Мужской" checked> Мужской</label>
+      <label class="radio"><input type="radio" name="gender" value="Женский"> Женский</label>
+    </div>
+    <div class="field">
+      <label for="age">Возраст:</label>
+      <input type="number" id="age" min="18" max="100" value="30">
+    </div>
+  </section>
+
+  <section id="questions" class="card">
+    <h2>Вопросы</h2>
+    <p class="instruction">
+      Прочитайте каждую группу утверждений. Выберите <b>одно</b> утверждение,
+      которое лучше всего описывает ваше самочувствие <b>на этой неделе и сегодня</b>.
+    </p>
+    <div id="questions-container"></div>
+  </section>
+
+  <section class="actions">
+    <button id="btn-chart" type="button" class="secondary">Показать график</button>
+    <button id="btn-pdf" type="button" class="primary">Скачать PDF-отчёт</button>
+  </section>
+
+  <div id="status-box" style="display:none; background:#fff8e1; border-left:4px solid #f0ad4e;
+       padding:12px 16px; border-radius:6px; margin:12px 0; font-family:monospace; font-size:13px;
+       white-space:pre-wrap; max-height:220px; overflow-y:auto;"></div>
+
+  <section id="chart-section" class="card hidden">
+    <h2>Профиль результатов</h2>
+    <canvas id="resultChart" width="600" height="320"></canvas>
+  </section>
+
+  <footer>
+    <p>Результат носит ознакомительный характер и не заменяет консультацию специалиста.</p>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
